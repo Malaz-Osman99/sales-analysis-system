@@ -1,0 +1,151 @@
+order_id,order_date,Product Name,Category,quantity,total_price,customer_type,payment_method,City,order_date_dt,total_price_clean
+1001,2023-12-06,Bush Somerset Collection Bookcase,Furniture,2,261.96,Individual,Card,Henderson,2023-12-06,261.96
+1002,2023-12-07,"Hon Deluxe Fabric Upholstered Stacking Chairs, Rounded Back",Furniture,3,731.94,Business,E-Wallet,Henderson,2023-12-07,731.94
+1003,2023-12-08,Self-Adhesive Address Labels for Typewriters by Universal,Office Supplies,2,14.62,Individual,Cash,Los Angeles,2023-12-08,14.62
+1004,2023-12-09,Bretford CR4500 Series Slim Rectangular Table,Furniture,5.7,9575776,Individual,Card,,2023-12-09,9575776.0
+1005,,Eldon Fold 'N Roll Cart System,Office Supplies,2,22368,Business,Bank Transfer,Fort Lauderdale,,22368.0
+1006,2023-12-11,"Eldon Expressions Wood and Plastic Desk Accessories, Cherry Wood",Furniture,7,48.86,Individual,Card,Los Angeles,2023-12-11,48.86
+1006,2023-12-12,Newell 322,Office Supplies,4,7.28,Individual,E-Wallet,Los Angeles,2023-12-12,7.28
+1008,2023-12-13,Mitel 5320 IP Phone VoIP phone,Technology,6,907152,Individual,Card,Los Angeles,2023-12-13,907152.0
+1009,2023-12-14,DXL Angle-View Binders with Locking Rings by Samsill,Technology,3,18504,Business,Cash,Los Angeles,2023-12-14,18504.0
+1010,2023-01-15,Belkin F5C206VTEL 6 Outlet Surge,Office Supplies,5,114.9,Individual,Card,Los Angeles,2023-01-15,114.9
+1011,2023-12-16,Chromcraft Rectangular Conference Tables,Furniture,9,1706184,Individual,E-Wallet,Los Angeles,2023-12-16,1706184.0
+1012,2023-12-17,Konftel 250 Conference phone - Charcoal black,Technology,4-,911424,Business,Card,Los Angeles,2023-12-17,911424.0
+1013,2023-12-18,Xerox 1967,Office Supplies,3,15552,Individual,Bank Transfer,Concord,2023-12-18,15552.0
+1014,2023-12-19,Fellowes PB200 Plastic Comb Binding Machine,Office Supplies,3,407976,Individual,Card,Seattle,2023-12-19,407976.0
+1015,2023-12-20,"Holmes Replacement Filter for HEPA Air Cleaner, Very Large Room, HEPA Filter",Office Supplies,5,68.81,Individual,E-Wallet,Fort Worth,2023-12-20,68.81
+1010,2023-12-21,Storex DuraTech Recycled Plastic Frosted Binders,Office Supplies,3,0,Business,Card,Fort Worth,2023-12-21,0.0
+1017,2023-12-22,"Stur-D-Stor Shelving, Vertical 5-Shelf: 72""H x 36""W x 18 1/2""D",Office Supplies,6,665.88,Individual,Cash,Madison,2023-12-22,665.88
+1018,2023-12-23,Fellowes Super Stor/Drawer,Office Supplies,tow,55.5,Individual,Card,West Jordan,2023-12-23,55.5
+1019,2023-12-24,Newell 341,Office Supplies,0,8.56,Individual,E-Wallet,San Francisco,2023-12-24,8.56
+1020,2027-12-25,,Technology,3,213.48,Business,Card,San Francisco,2027-12-25,213.48
+1021,2023-12-26,"Wilson Jones Hanging View Binder, White, 1""",Office Supplies,4,22.72,Individual,Card,San Francisco,2023-12-26,22.72
+1022,2023-12-27,Newell 318,Office Supplies,7,19.46,Individual,Card,Fremont,2023-12-27,19.46
+1023,2023-12-28,"Acco Six-Outlet Power Strip, 4' Cord Length",Office Supplies,7,60.34,,E-Wallet,Fremont,2023-12-28,60.34
+1024,2023-12-29,nealbolish,Other,2,71372,Business,Cash,Philadelphia,2023-12-29,71372.0
+1025,2023-12-30,Bretford CR4500 Series Slim Rectangular Table,Furniture,3,1044.63,Individual,Card,Orem,2023-12-30,1044.63
+1026,2023-12-31,Wilson Jones Active Use Binders,Office Supplies,2,11648,Individual,Bank Transfer,Los Angeles,2023-12-31,11648.0
+1027,2024-01-01,Imation 8GB Mini TravelDrive USB 2.0 Flash Drive,Technology,3,90.57,Individual,Card,Los Angeles,2024-01-01,90.57
+1028,2024-01-02,"Riverside Palais Royal Lawyers Bookcase, Royale Cherry Finish",Furniture,7,3083.43,Business,E-Wallet,Philadelphia,2024-01-02,3083.43
+1029,2024-01-03,Avery Recycled Flexi-View Covers for Binding Systems,Office Supplies,2,-9618,Individual,Cash,Philadelphia,2024-01-03,-9618.0
+1030,2024-01-04,"Howard Miller 13-3/4"" Diameter Brushed Chrome Round Wall Clock",Furniture,3,124.2,Individual,Card,Philadelphia,2024-01-04,124.2
+1031,2024-01-05,Poly String Tie Envelopes,Office Supplies,2,3264,Business,E-Wallet,Philadelphia,2024-01-05,3264.0
+1032,2024-01-06,"BOSTON Model 1800 Electric Pencil Sharpeners, Putty/Woodgrain",Office Supplies,,86304,Individual,Card,Philadelphia,2024-01-06,86304.0
+1033,2024-01-07,"Acco Pressboard Covers with Storage Hooks, 14 7/8"" x 11"", Executive Red",Office Supplies,6,6858,Individual,E-Wallet,Philadelphia,2024-01-07,6858.0
+1034,2024-01-08,Lumber Crayons,Office Supplies,2,15.76,Individual,Cash,Philadelphia,2024-01-08,15.76
+1035,2024-01-09,,Office Supplies,3,29472,Individual,Card,Houston,2024-01-09,29472.0
+1036,2024-01-10,GE 30524EE4,Technology,7,1097544,Business,E-Wallet,Richardson,2024-01-10,1097544.0
+1037,2024-01-11,"Electrix Architect's Clamp-On Swing Arm Lamp, Black",Furniture,0,190.92,Individual,Cash,Richardson,2024-01-11,190.92
+1038,2024-01-12,"#10-4 1/8"" x 9 1/2"" Premium Diagonal Seam Envelopes",Office Supplies,9,113328,Individual,Card,Houston,2024-01-12,113328.0
+1039,2024-01-13,"Atlantic Metals Mobile 3-Shelf Bookcases, Custom Colors",Furniture,,,Business,Bank Transfer,Houston,2024-01-13,0.0
+1040,2024-01-14,"Global Fabric Manager's Chair, Dark Gray",Furniture,3,212058,Individual,Card,Houston,2024-01-14,212058.0
+1041,2024-01-15,Plantronics HL10 Handset Lifter,Technology,4,371168,Individual,E-Wallet,Houston,2024-01-15,371168.0
+1042,2024-01-16,Panasonic Kx-TS550,Technology,4,147168,Individual,Card,Naperville,2024-01-16,147168.0
+1043,2024-01-17,"Eldon Base for stackable storage shelf, platinum",Office Supplies,2,77.88,Individual,Cash,Los Angeles,2024-01-17,77.88
+1044,2024-01-18,"Advantus 10-Drawer Portable Organizer, Chrome Metal Frame, Smoke Drawers",Office Supplies,2,95616,Business,Card,Melbourne,2024-01-18,95616.0
+1045,2024-01-19,"Verbatim 25 GB 6x Blu-ray Single Layer Recordable Disc, 25/Pack",Technology,2,45.98,Individual,E-Wallet,Eagan,2024-01-19,45.98
+1046,2024-01-20,Wilson Jones Leather-Like Binders with DublLock Round Rings,Office Supplies,0,17.46,Individual,Card,Eagan,2024-01-20,17.46
+1047,2024-01-21,"Gould Plastics 9-Pocket Panel Bin, 18-3/8w x 5-1/4d x 20-1/2h, Black",Office Supplies,4,211.96,Individual,Crypto,Westland,2024-01-21,211.96
+1048,2024-01-22,Imation 8gb Micro Traveldrive Usb 2.0 Flash Drive,Technology,3,45,Business,Card,Dover,2024-01-22,45.0
+1049,2024-01-23,"LF Elite 3D Dazzle Designer Hard Case Cover, Lf Stylus Pen and Wiper For Apple Iphone 5c Mini Lite",Technology,2,21.8,Individual,E-Wallet,Dover,2024-01-23,21.8
+1050,2024-01-24,"C-Line Peel & Stick Add-On Filing Pockets, 8-3/4 x 5-1/8, 10/Pack",Office Supplies,6,38.22,Individual,Cash,New Albany,2024-01-24,38.22
+1051,2024-01-25,Avery 485,,6,75.18,Business,Card,New Albany,2024-01-25,75.18
+1052,2024-01-26,Longer-Life Soft White Bulbs,Furniture,2,6.16,Individual,Bank Transfer,New Albany,2024-01-26,6.16
+1053,2024-01-27,"Global Leather Task Chair, Black",Furniture,1,89.99,Individual,Card,New Albany,2024-01-27,89.99
+1054,2024-01-28,Advantus Push Pins,Office Supplies,7,15.26,Individual,E-Wallet,New York City,2024-01-28,15.26
+1055,2024-01-29,AT&T CL83451 4-Handset Telephone,Technology,5,1029.95,Business,Card,New York City,2024-01-29,1029.95
+1056,2024-01-30,Home/Office Personal File Carts,Office Supplies,6,208.56,Individual,Cash,Troy,2024-01-30,208.56
+1057,2024-01-31,Xerox 232,Office Supplies,5,32.4,Individual,Card,Troy,2024-01-31,32.4
+1058,2024-02-01,Novimex Turbo Task Chair,Furniture,5,319.41,Individual,E-Wallet,Troy,2024-02-01,319.41
+1059,2024-02-02,"Array Parchment Paper, Assorted Colors",Office Supplies,2,14.56,Business,Card,Troy,2024-02-02,14.56
+1060,2024-02-03,Imation 8gb Micro Traveldrive Usb 2.0 Flash Drive,Technology,2,30,Individual,Bank Transfer,Troy,2024-02-03,30.0
+1061,2024-02-04,Plastic Binding Combs,Office Supplies,4,48.48,Individual,Card,Troy,2024-02-04,48.48
+1062,2024-02-05,Prang Dustless Chalk Sticks,Office Supplies,1,1.68,Business,E-Wallet,Troy,2024-02-05,1.68
+1063,,"Verbatim 25 GB 6x Blu-ray Single Layer Recordable Disc, 3/Pack",Technology,2,13.98,Individual,Cash,Los Angeles,,13.98
+1064,2024-02-07,"Acco PRESSTEX Data Binder with Storage Hooks, Dark Blue, 14 7/8"" X 11""",Office Supplies,-6,25824,Individual,Card,Los Angeles,2024-02-07,25824.0
+1065,2024-02-08,Xerox 1943,Office Supplies,3,146.73,Business,Bank Transfer,Los Angeles,2024-02-08,146.73
+1066,2024-02-09,Luxo Economy Swing Arm Lamp,Furniture,4,79.76,Individual,Card,Los Angeles,2024-02-09,79.76
+1067,2024-02-10,"Global Value Mid-Back Manager's Chair, Gray",Furniture,5,213115,Individual,Cash,Chicago,2024-02-10,213115.0
+1068,2024-02-11,"Hunt BOSTON Model 1606 High-Volume Electric Pencil Sharpener, Beige",Office Supplies,8,1113024,Individual,Card,Gilbert,2024-02-11,1113024.0
+1069,2024-02-12,netTALK DUO VoIP Telephone Service,Technology,4,167968,Individual,E-Wallet,Gilbert,2024-02-12,167968.0
+1070,2024-02-13,"Snap-A-Way Black Print Carbonless Ruled Speed Letter, Triplicate",Office Supplies,2,75.88,Business,Cash,Springfield,2024-02-13,75.88
+1071,2024-02-14,Avery Binding System Hidden Tab Executive Style Index Sets,Office Supplies,1,4616,Individual,Card,New York City,2024-02-14,4616.0
+1072,2024-02-15,"Telephone Message Books with Fax/Mobile Section, 5 1/2"" x 3 3/16""",Office Supplies,3,19.05,Individual,Bank Transfer,Jackson,2024-02-15,19.05
+1073,2024-02-16,High-Back Leather Manager's Chair,Furniture,80,831936,Business,E-Wallet,Memphis,2024-02-16,831936.0
+1074,2024-02-17,"Tenex Traditional Chairmats for Medium Pile Carpet, Standard Lip, 36"" x 48""",Furniture,2,97.04,Individual,Card,Memphis,2024-02-17,97.04
+,2024-02-18,Safco Industrial Wire Shelving System,Office Supplies,1,72784,Individual,Cash,Memphis,2024-02-18,72784.0
+1076,2024-02-19,Economy Binders,Office Supplies,3,1248,Business,Card,Houston,2024-02-19,1248.0
+1077,2024-02-20,"6"" Cubicle Wall Clock, Black",Furniture,3,9708,Individual,E-Wallet,Houston,2024-02-20,9708.0
+1078,2024-02-21,"SimpliFile Personal File, Black Granite, 15w x 6-15/16d x 11-1/4h",Office Supplies,3,27.24,Individual,Card,Houston,2024-02-21,27.24
+1079,2024-02-22,"Eldon Expressions Desk Accessory, Wood Pencil Holder, Oak",Furniture,5,19.3,Business,Bank Transfer,Houston,2024-02-22,19.3
+1080,2024-02-23,"1.7 Cubic Foot Compact ""Cube"" Office Refrigerators",Office Supplies,1,208.16,Individual,Card,Decatur,2024-02-23,208.16
+1081,2024-02-24,Avery Heavy-Duty EZD  Binder With Locking Rings,Office Supplies,30,16.74,Individual,Cash,Decaturr,2024-02-24,16.74
+1082,2024-02-25,"Premium Writing Pencils, Soft, #2 by Central Association for the Blind",,5,14.9,Individual,E-Wallet,San Francisco,2024-02-25,14.9
+1083,2024-02-26,"Sortfiler Multipurpose Personal File Organizer, Black",Office Supplies,1,21.39,Business,Card,San  Francisco,2024-02-26,21.39
+1084,2024-02-27,Jet-Pak Recycled Peel 'N' Seal Padded Mailers,Office Supplies,7,200984,Individual,Cash,Durhm,2024-02-27,200984.0
+1085,2010-02-28,Safco Industrial Wire Shelving,Office Supplies,3,230376,Individual,Card,Chicago,2010-02-28,230376.0
+1086,2024-03-01,Novimex Swivel Fabric Task Chair,Furniture,2,301.96,Business,E-Wallet,Columbia,2024-03-01,301.96
+1030,2024-03-02,Logitech LS21 Speaker System - PC Multimedia - 2.1-CH - Wired,Technology,1-,19.99,Individual,Card,Rochestr,2024-03-02,19.99
+1088,2024-03-03,Avery 511,Office Supplies,2,sixteen,Individual,Bank Transfer,Rochester,2024-03-03,0.0
+1089,2024-03-04,Eldon Portable Mobile Manager,Office Supplies,7,158368,Business,Card,Houston,2024-03-04,158368.0
+1090,2024-03-05,Turquoise Lead Holder with Pocket Clip,Office Supplies,3,20.1,Individual,Cash,Los Angeles,2024-03-05,20.1
+1091,2024-03-06,Panasonic Kx-TS550,Technology,2,73584,Business,E-Wallet,Losangeles,2024-03-06,73584.0
+1092,2024-03-07,Xerox 1995,Office Supplies,1,6.48,Individual,Card,Los Angeles,2024-03-07,6.48
+1093,2024-03-08,Xerox 1999,Office Supplies,2,12.96,Business,Card,Minneapolis,2024-03-08,12.96
+1015,2024-03-09,"Seth Thomas 13 1/2"" Wall Clock",Furniture,3,53.34,Individual,Cash,Minneapoliss,2024-03-09,53.34
+1095,2024-03-10,Ibico Standard Transparent Covers,Office Supplies,2-,32.96,Individual,Card,Minneapolis,2024-03-10,32.96
+1096,2024-03-11,Flexible Leather- Look Classic Collection Ring Binder,Office Supplies,1,5682,Business,E-Wallet,Portland,2024-03-11,5682.0
+1097,2024-03-12,9-3/4 Diameter Round Wall Clock,Furniture,7,96.53,Individual,Bank Transfer,New York Cty,2024-03-12,96.53
+1098,2024-03-13,Trimflex Flexible Post Binders,Office Supplies,3,51312,Individual,Card,San Francsco,2024-03-13,51312.0
+1099,2024-03-14,Fellowes Basic Home/Office Series Surge Protectors,Office Supplies,6,77.88,Business,Cash,Saint Paul,2024-03-14,77.88
+1100,2024-03-15,Avery Personal Creations Heavyweight Cards,Office Supplies,7,64624,Individual,E-Wallet,Chicago,2024-03-15,64624.0
+1101,2024-03-16,SanDisk Ultra 64 GB MicroSDHC Class 10 Memory Card,Technology,3,95976,Individual,Card,Chcago,2024-03-16,95976.0
+1102,2024-03-17,Avery Hidden Tab Dividers for Binding Systems,Office Supplies,3,1788,Individual,Card,Chicago,2024-03-17,1788.0
+1103,2024-03-18,Universal Premium White Copier/Laser Paper (20Lb. and 87 Bright),Office Supplies,4000,23.92,Business,E-Wallet,Rochester,2024-03-18,23.92
+1104,2024-03-19,Logitech K350 2.4Ghz Wireless Keyboard,Technology,6,238896,Individual,Cash,Aurorra,2024-03-19,238896.0
+1105,2024-03-20,"Deflect-o DuraMat Lighweight, Studded, Beveled Mat for Low Pile Carpeting",Furniture,3,102.36,Individual,Bank Transfer,Aurora,2024-03-20,102.36
+1106,2024-03-21,"Avery Trapezoid Ring Binder, 3"" Capacity, Black, 1040 sheets",Office Supplies,3,36882,Business,Card,Aurora,2024-03-21,36882.0
+1107,2024-03-22,Memorex Mini Travel Drive 8 GB USB 2.0 Flash Drive,Technology,8,74112,Individual,E-Wallet,Charlote,2024-03-22,74112.0
+1108,2024-03-23,Speck Products Candyshell Flip Case,Technology,1,27992,Individual,Cash,Charlotte,2024-03-23,27992.0
+1109,2024-03-24,Newell Chalk Holder,Office Supplies,1,3304,Business,Cheque,Charlotte,2024-03-24,3304.0
+1110,2024-03-25,Logitech Gaming G510s - Keyboard,Technology,5,339.96,Individual,Card,Orland Park,2024-03-25,339.96
+1111,2024-03-26,Magnifier Swing Arm Lamp,Furniture,2,41.96,Individual,E-Wallet,Newyork City,2024-03-26,41.96
+1112,2024-03-27,"Hunt PowerHouse Electric Pencil Sharpener, Blue",Office Supplies,2,75.96,Business,Cash,Urbandale,2024-03-27,75.96
+1113,2024-03-28,"Avery Durable Plastic 1"" Binders",Office Supplies,6,27.24,Individual,Bank Transfer,Urbandale,2024-03-28,27.24
+1114,2024-03-29,"OIC Colored Binder Clips, Assorted Sizes",Office Supplies,14,40096,Individual,Card,Columbus,2024-03-29,40096.0
+1115,2024-03-30,"Redi-Strip #10 Envelopes, 4 1/8 x 9 1/2",Office Supplies,2,4.72,Business,E-Wallet,Columbuss,2024-03-30,4.72
+1116,2024-03-31,Xerox 1921,Office Supplies,3,23976,Business,Cash,Columbus,2024-03-31,23976.0
+1117,2024-04-01,"Tyvek  Top-Opening Peel & Seel Envelopes, Plain White",Office Supplies,6,130464,Individual,Card,Columbus,2024-04-01,130464.0
+1118,2024-04-02,Hon Racetrack Conference Tables,Furniture,3,787.53,Individual,Card,Seattle,2024-04-02,787.53
+1119,2024-04-03,GBC DocuBind 300 Electric Binding Machine,Office Supplies,1,157794,Business,E-Wallet,Bristoll,2024-04-03,157794.0
+1120,2024-04-04,Artistic Insta-Plaque,Furniture,3,47.04,Individual,Card,Wilmington,2024-04-04,47.04
+1121,2024-04-05,DXL Angle-View Binders with Locking Rings by Samsill,Office Supplies,4,30.84,Business,Cash,Wilmington,2024-04-05,30.84
+1122,2024-04-06,"Companion Letter/Legal File, Black",Office Supplies,6,226.56,Individual,Bank Transfer,Wilmingto,2024-04-06,226.56
+1123,2024-04-07,Globe Weis Peel & Seel First Class Envelopes,Office Supplies,9,115.02,Individual,Card,Wilmington,2024-04-07,115.02
+1124,2024-04-08,KLD Oscar II Style Snap-on Ultra Thin Side Flip Synthetic Leather Cover Case for HTC One HTC M7,Technology,7,68.04,Business,E-Wallet,Wilmington,2024-04-08,68.04
+1125,2024-04-09,Global Deluxe High-Back Manager's Chair,Furniture,3,600558,Individual,Cash,Houston,2024-04-09,600558.0
+1126,2024-04-10,Bevis 44 x 96 Conference Tables,Furniture,6,617.7,Individual,Card,Bloomingtn,2024-04-10,617.7
+1127,2024-04-11,"Avery Durable Slant Ring Binders, No Labels",Office Supplies,2,2388,Business,E-Wallet,,2024-04-11,2388.0
+1128,2024-04-12,"Trav-L-File Heavy-Duty Shuttle II, Black",Office Supplies,7,243992,Individual,Bank Transfer,Phoenix,2024-04-12,243992.0
+1129,2024-04-13,"Global Task Chair, Black",Furniture,2,81424,Individual,Card,Los Angeles,2024-04-13,81424.0
+1130,2024-04-14,Eldon Cleatmat Plus Chair Mats for High Pile Carpets,Furniture,3-,238.56,Business,Card,Los Angeles,2024-04-14,238.56
+1131,2024-04-15,Anker 36W 4-Port USB Wall Charger Travel Power Adapter for iPhone 5s 5c 5,Technology,5,59.97,Individual,E-Wallet,Colmbus,2024-04-15,59.97
+1132,2024-04-16,Xerox 1916,Office Supplies,2,78304,Individual,Cash,Columbus,2024-04-16,78304.0
+1133,2024-04-17,Staples,Office Supplies,9,21456,Individual,Card,Columbus,2024-04-17,21456.0
+1134,2024-04-18,Xerox 195,Office Supplies,3,20.04,Business,Bank Transfer,Rosevile,2024-04-18,20.04
+1135,2024-04-19,Xerox 1880,Office Supplies,1,             ,Individual,E-Wallet,Roseville,2024-04-19,0.0
+1136,2024-04-20,"Sanford Colorific Colored Pencils, 12/Box",Office Supplies,4,35.44,Individual,Card,Roseville,2024-04-20,35.44
+1137,2024-04-21,Ideal Clamps,Office Supplies,2,11.52,Business,Cash,Roseville,2024-04-21,11.52
+ABC,2024-04-22,GBC Wire Binding Strips,Office Supplies,3,4.02,Individual,Card,Rose Ville,2024-04-22,4.02
+1139,2024-04-23,Fiskars Softgrip Scissors,Office Supplies,6,76176,Individual,E-Wallet,Roseville,2024-04-23,76176.0
+1140,2024-04-24,Longer-Life Soft White Bulbs,Furniture,14,65.88,Business,Card,Roseville,2024-04-24,65.88
+1141,2024-04-25,"Howard Miller 13-3/4"" Diameter Brushed Chrome Round Wall Clock",Furniture,2,43.12,Individual,Bank Transfer,Philadelphia,2024-04-25,43.12
+1142,2024-04-26,Newell 343,Office Supplies,3,82.8,,Card,San Francisco,2024-04-26,82.8
+1143,2024-04-27,Convenience Packs of Business Envelopes,Office Supplies,3,8.82,Individual,Cash,San Francisco,2024-04-27,8.82
+1144,2024-04-28,Xerox 1911,Office Supplies,3,10.86,Business,E-Wallet,Sanfrancisco,2024-04-28,10.86
+1145,2024-04-29,Sanyo 2.5 Cubic Foot Mid-Size Office Refrigerators,Office Supplies,3,143.7,Individual,Card,Independance,2024-04-29,143.7
+1146,2024-04-30,Safco Industrial Wire Shelving,Office Supplies,7,839.43,Individual,Cash,Pasadena,2024-04-30,839.43
+1147,2024-05-01,"Seth Thomas 14"" Putty-Colored Wall Clock",Furniture,4,671.93,Business,Card,New Ark,2024-05-01,671.93
+1148,2024-05-02,Plantronics Cordless Phone Headset with In-line Volume - M214C,Technology,11,93888,Individual,E-Wallet,Franklin,2024-05-02,93888.0
+1149,2024-05-03,Anker Astro 15000mAh USB Portable Charger,Technology,3,384.45,Individual,Card,Franklin,2024-05-03,384.45
+1150,2024-05-04,"Hon Deluxe Fabric Upholstered Stacking Chairs, Rounded Back",Furniture,8,149.97,Business,Bank Transfer,Frankln,2024-05-04,149.97
