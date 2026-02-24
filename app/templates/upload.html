@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رفع ملف المبيعات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .upload-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .file-upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9ff;
+        }
+        
+        .file-upload-area:hover {
+            background: #f0f2ff;
+            border-color: #764ba2;
+        }
+        
+        .file-upload-area i {
+            font-size: 50px;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .file-upload-area h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .file-upload-area p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .selected-file {
+            background: #f0f2ff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .selected-file.active {
+            display: flex;
+        }
+        
+        .file-name {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .remove-file {
+            color: #ff4444;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .requirements {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .requirements h4 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .requirements ul {
+            list-style: none;
+        }
+        
+        .requirements li {
+            color: #666;
+            margin-bottom: 10px;
+            padding-right: 25px;
+            position: relative;
+        }
+        
+        .requirements li:before {
+            content: "✓";
+            color: #28a745;
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+        
+        .btn-upload {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .btn-upload:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-upload:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .flash-messages {
+            margin-bottom: 20px;
+        }
+        
+        .flash-message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .flash-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .flash-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .flash-message.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="upload-card">
+            <h1>📤 رفع ملف المبيعات</h1>
+            <p class="subtitle">ارفع ملف Excel أو CSV لتحليل بيانات مبيعاتك</p>
+            
+            <!-- رسائل التنبيه -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash-message {{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            <!-- متطلبات الملف -->
+            <div class="requirements">
+                <h4>📋 متطلبات الملف:</h4>
+                <ul>
+                    <li>ملف بصيغة CSV أو Excel (.xlsx, .xls)</li>
+                    <li>يحتوي على الأعمدة التالية:
+                        <br>- product_name (اسم المنتج)
+                        <br>- quantity (الكمية)
+                        <br>- price (السعر)
+                        <br>- sale_date (تاريخ البيع)
+                    </li>
+                    <li>البيانات الرقمية يجب أن تكون أرقاماً صحيحة</li>
+                    <li>التواريخ بصيغة YYYY-MM-DD</li>
+                </ul>
+            </div>
+            
+            <!-- نموذج رفع الملف -->
+            <form method="POST" enctype="multipart/form-data" id="uploadForm">
+                <div class="file-upload-area" onclick="document.getElementById('fileInput').click()">
+                    <i>📁</i>
+                    <h3>اختر ملفاً أو اسحبه هنا</h3>
+                    <p>يدعم: CSV, Excel</p>
+                    <input type="file" id="fileInput" name="file" class="file-input" 
+                           accept=".csv,.xlsx,.xls" onchange="handleFileSelect(event)">
+                </div>
+                
+                <div class="selected-file" id="selectedFile">
+                    <span class="file-name" id="fileName"></span>
+                    <span class="remove-file" onclick="removeFile()">✖</span>
+                </div>
+                
+                <button type="submit" class="btn-upload" id="submitBtn" disabled>
+                    ابدأ التحليل
+                </button>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>جاري معالجة الملف... قد يستغرق ذلك بضع ثوانٍ</p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('fileName').textContent = file.name;
+                document.getElementById('selectedFile').classList.add('active');
+                document.getElementById('submitBtn').disabled = false;
+            }
+        }
+        
+        function removeFile() {
+            document.getElementById('fileInput').value = '';
+            document.getElementById('selectedFile').classList.remove('active');
+            document.getElementById('submitBtn').disabled = true;
+        }
+        
+        document.getElementById('uploadForm').addEventListener('submit', function() {
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('submitBtn').disabled = true;
+        });
+    </script>
+</body>
+</html>
