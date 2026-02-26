@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}الملف الشخصي - {{ super() }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .profile-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 0 20px;
+    }
+    
+    .profile-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        background: white;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: bold;
+        color: #667eea;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .profile-name {
+        font-size: 2rem;
+        margin-bottom: 5px;
+    }
+    
+    .profile-email {
+        opacity: 0.9;
+        margin-bottom: 15px;
+    }
+    
+    .profile-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        margin-bottom: 30px;
+    }
+    
+    .stat-card {
+        text-align: center;
+    }
+    
+    .stat-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #667eea;
+    }
+    
+    .stat-label {
+        color: #666;
+        margin-top: 5px;
+    }
+    
+    .profile-actions {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .action-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        border: none;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        color: #333;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+    
+    .action-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        background: linear-gradient(135deg, #e9ecef, #dee2e6);
+    }
+    
+    .action-btn i {
+        font-size: 1.2rem;
+    }
+    
+    .action-btn.danger {
+        background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+        color: #721c24;
+    }
+    
+    .action-btn.danger:hover {
+        background: linear-gradient(135deg, #f5c6cb, #f1b0b7);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <!-- رأس الملف الشخصي -->
+    <div class="profile-header">
+        <div class="profile-avatar">
+            {{ current_user.username[0]|upper }}
+        </div>
+        <div class="profile-name">{{ current_user.username }}</div>
+        <div class="profile-email">{{ current_user.email }}</div>
+        <div style="margin-top: 10px;">
+            <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;">
+                عضو منذ {{ current_user.created_at.strftime('%Y-%m-%d') }}
+            </span>
+        </div>
+    </div>
+    
+    <!-- إحصائيات سريعة -->
+    <div class="profile-stats">
+        <div class="stat-card">
+            <div class="stat-value">{{ current_user.sales|length }}</div>
+            <div class="stat-label">عدد المبيعات</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ current_user.analyses|length }}</div>
+            <div class="stat-label">عدد التحليلات</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ current_user.predictions|length }}</div>
+            <div class="stat-label">عدد التنبؤات</div>
+        </div>
+    </div>
+    
+    <!-- إجراءات الحساب -->
+    <div class="profile-actions">
+        <h3 style="margin-bottom: 20px; color: #333;">
+            <i class="fas fa-cog" style="margin-left: 10px; color: #667eea;"></i>
+            إعدادات الحساب
+        </h3>
+        
+        <div class="action-buttons">
+            <a href="{{ url_for('auth.edit_profile') }}" class="action-btn">
+                <i class="fas fa-user-edit"></i>
+                تعديل الملف الشخصي
+            </a>
+            
+            <a href="{{ url_for('auth.change_password') }}" class="action-btn">
+                <i class="fas fa-key"></i>
+                تغيير كلمة المرور
+            </a>
+            
+            <a href="#" class="action-btn">
+                <i class="fas fa-bell"></i>
+                إعدادات الإشعارات
+            </a>
+            
+            <a href="#" class="action-btn">
+                <i class="fas fa-palette"></i>
+                المظهر
+            </a>
+            
+            <a href="{{ url_for('auth.logout') }}" class="action-btn danger">
+                <i class="fas fa-sign-out-alt"></i>
+                تسجيل الخروج
+            </a>
+            
+            <a href="#" class="action-btn danger">
+                <i class="fas fa-trash-alt"></i>
+                حذف الحساب
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block title %}لوحة التحكم - نظام تحليل المبيعات{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if not has_data %}
+        <!-- حالة عدم وجود بيانات -->
+        <div class="no-data">
+            <i class="fas fa-chart-bar"></i>
+            <h2>لا توجد بيانات للتحليل</h2>
+            <p>ابدأ برفع ملف مبيعات لرؤية التحليلات والرسوم البيانية</p>
+            <a href="{{ url_for('upload.upload_file') }}" class="btn">
+                <i class="fas fa-upload"></i> رفع ملف مبيعات
+            </a>
+        </div>
+    {% else %}
+        <!-- رأس الصفحة -->
+        <div class="page-header">
+            <h1>
+                <i class="fas fa-chart-line"></i>
+                لوحة التحكم
+            </h1>
+            <div class="last-update">
+                <i class="far fa-clock"></i>
+                آخر تحديث: {{ analysis_date }}
+            </div>
+        </div>
+        
+        <!-- مؤشرات الأداء KPIs -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="kpi-label">إجمالي المبيعات</div>
+                <div class="kpi-value">{{ "%.2f"|format(kpis.total_sales) }} ريال</div>
+                <div class="kpi-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    +12.5%
+                </div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="kpi-label">عدد العمليات</div>
+                <div class="kpi-value">{{ kpis.total_transactions }}</div>
+                <div class="kpi-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    +8.2%
+                </div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="kpi-label">متوسط قيمة العملية</div>
+                <div class="kpi-value">{{ "%.2f"|format(kpis.avg_transaction_value) }} ريال</div>
+                <div class="kpi-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    +5.3%
+                </div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon">
+                    <i class="fas fa-cubes"></i>
+                </div>
+                <div class="kpi-label">الكمية المباعة</div>
+                <div class="kpi-value">{{ kpis.total_quantity }}</div>
+                <div class="kpi-change negative">
+                    <i class="fas fa-arrow-down"></i>
+                    -2.1%
+                </div>
+            </div>
+        </div>
+        
+        <!-- بيانات مخفية للرسوم البيانية -->
+        <input type="hidden" id="monthlyData" value='{{ monthly_sales|tojson }}'>
+        <input type="hidden" id="topProductsData" value='{{ top_products|tojson }}'>
+        <input type="hidden" id="categoryData" value='{{ categories|tojson }}'>
+        <input type="hidden" id="peakHoursData" value='{{ peak_hours|tojson }}'>
+        <input type="hidden" id="weekdayData" value='{{ weekdays|tojson }}'>
+        
+        <!-- شبكة الرسوم البيانية -->
+        <div class="charts-grid">
+            <!-- المبيعات الشهرية -->
+            <div class="chart-card full-width">
+                <div class="chart-header">
+                    <h3>
+                        <i class="fas fa-calendar-alt"></i>
+                        اتجاه المبيعات الشهرية
+                    </h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="monthlySalesChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- أفضل المنتجات -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>
+                        <i class="fas fa-trophy"></i>
+                        أفضل المنتجات
+                    </h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="topProductsChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- توزيع الفئات -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>
+                        <i class="fas fa-pie-chart"></i>
+                        توزيع المبيعات حسب الفئة
+                    </h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- جدول أفضل المنتجات -->
+        <div class="products-section">
+            <div class="section-header">
+                <h3>
+                    <i class="fas fa-crown"></i>
+                    أفضل 5 منتجات
+                </h3>
+            </div>
+            
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>الترتيب</th>
+                        <th>المنتج</th>
+                        <th>الفئة</th>
+                        <th>إجمالي المبيعات</th>
+                        <th>الكمية المباعة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in top_products[:5] %}
+                    <tr>
+                        <td>
+                            <span class="product-rank {% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% elif loop.index == 3 %}bronze{% endif %}">
+                                {{ loop.index }}
+                            </span>
+                        </td>
+                        <td>{{ product.product_name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ "%.2f"|format(product.total_sales) }} ريال</td>
+                        <td>{{ product.total_quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- الرؤى والتوصيات -->
+        <div class="insights-section">
+            <div class="section-header">
+                <h3>
+                    <i class="fas fa-lightbulb"></i>
+                    الرؤى والتوصيات
+                </h3>
+                <button class="btn btn-secondary" onclick="refreshData()" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i> تحديث
+                </button>
+            </div>
+            
+            <div class="insights-grid">
+                {% for insight in insights[:4] %}
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        {% if insight.type == 'positive' %}
+                            <i class="fas fa-smile"></i>
+                        {% elif insight.type == 'warning' %}
+                            <i class="fas fa-exclamation-triangle"></i>
+                        {% elif insight.type == 'negative' %}
+                            <i class="fas fa-frown"></i>
+                        {% else %}
+                            <i class="fas fa-info-circle"></i>
+                        {% endif %}
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-title">{{ insight.title }}</div>
+                        <div class="insight-message">{{ insight.message }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

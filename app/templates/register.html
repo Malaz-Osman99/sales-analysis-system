@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+
+{% block title %}حساب جديد - {{ super() }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .auth-container {
+        min-height: calc(100vh - 200px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+    
+    .auth-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .auth-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(135deg, #28a745, #20c997);
+    }
+    
+    .auth-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .auth-header i {
+        font-size: 3rem;
+        color: #28a745;
+        margin-bottom: 15px;
+    }
+    
+    .auth-header h2 {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+    }
+    
+    .auth-header p {
+        color: #666;
+        font-size: 0.95rem;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 500;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s;
+        background: #f8f9fa;
+    }
+    
+    .form-control:focus {
+        border-color: #28a745;
+        outline: none;
+        background: white;
+        box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.1);
+    }
+    
+    .form-control.is-invalid {
+        border-color: #dc3545;
+        background: #fff8f8;
+    }
+    
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 0.85rem;
+        margin-top: 5px;
+    }
+    
+    .btn-auth {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .btn-auth:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(40, 167, 69, 0.4);
+    }
+    
+    .auth-footer {
+        text-align: center;
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .auth-footer a {
+        color: #28a745;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    
+    .auth-footer a:hover {
+        color: #20c997;
+        text-decoration: underline;
+    }
+    
+    .password-requirements {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 10px 15px;
+        margin-top: 5px;
+        font-size: 0.85rem;
+    }
+    
+    .password-requirements p {
+        color: #666;
+        margin-bottom: 5px;
+    }
+    
+    .password-requirements ul {
+        list-style: none;
+        padding-right: 0;
+        margin: 0;
+    }
+    
+    .password-requirements li {
+        color: #666;
+        margin-bottom: 3px;
+        padding-right: 20px;
+        position: relative;
+    }
+    
+    .password-requirements li:before {
+        content: "•";
+        color: #28a745;
+        position: absolute;
+        right: 5px;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <i class="fas fa-user-plus"></i>
+            <h2>إنشاء حساب جديد</h2>
+            <p>انضم إلينا لتحليل مبيعاتك والتنبؤ بأرباحك</p>
+        </div>
+        
+        <!-- عرض رسائل الخطأ إن وجدت -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <form method="POST" action="{{ url_for('auth.register') }}">
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group">
+                <label class="form-label" for="username">
+                    <i class="fas fa-user" style="margin-left: 5px;"></i>
+                    اسم المستخدم
+                </label>
+                {{ form.username(class="form-control" + (" is-invalid" if form.username.errors else ""), placeholder="أدخل اسم المستخدم") }}
+                {% if form.username.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="email">
+                    <i class="fas fa-envelope" style="margin-left: 5px;"></i>
+                    البريد الإلكتروني
+                </label>
+                {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else ""), placeholder="example@domain.com") }}
+                {% if form.email.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="password">
+                    <i class="fas fa-lock" style="margin-left: 5px;"></i>
+                    كلمة المرور
+                </label>
+                {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else ""), placeholder="********") }}
+                {% if form.password.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="password2">
+                    <i class="fas fa-lock" style="margin-left: 5px;"></i>
+                    تأكيد كلمة المرور
+                </label>
+                {{ form.password2(class="form-control" + (" is-invalid" if form.password2.errors else ""), placeholder="********") }}
+                {% if form.password2.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.password2.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- متطلبات كلمة المرور -->
+            <div class="password-requirements">
+                <p>🔐 متطلبات كلمة المرور:</p>
+                <ul>
+                    <li>6 أحرف على الأقل</li>
+                    <li>يمكن استخدام حروف وأرقام ورموز</li>
+                </ul>
+            </div>
+            
+            <button type="submit" class="btn-auth">
+                <i class="fas fa-user-plus" style="margin-left: 8px;"></i>
+                إنشاء حساب
+            </button>
+            
+            <div class="auth-footer">
+                <p>لديك حساب بالفعل؟ <a href="{{ url_for('auth.login') }}">تسجيل الدخول</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

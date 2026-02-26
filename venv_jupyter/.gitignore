@@ -1,0 +1,19 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# البيانات (لا نريد رفعها على GitHub)
+data/raw/*
+data/processed/*
+data/database/*.db
+!data/database/.gitkeep
+
+# البيئة الافتراضية
+venv/
+venv_jupyter/
+
+# الملفات المؤقتة
+*.pyc
+__pycache__/
+*.ipynb_checkpoints/
+
+# ملفات الإعدادات المحلية
+*.local
+.env

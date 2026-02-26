@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+
+{% block title %}التنبؤات - نظام تحليل المبيعات{% endblock %}
+
+{% block extra_css %}
+<style>
+    .prediction-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        border-radius: 20px;
+        margin: 30px 0;
+        text-align: center;
+    }
+    
+    .prediction-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+    
+    .summary-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+    }
+    
+    .summary-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border: 1px solid #e0e0e0;
+    }
+    
+    .summary-card i {
+        font-size: 2.5rem;
+        color: #667eea;
+        margin-bottom: 15px;
+    }
+    
+    .summary-card .value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        margin: 10px 0;
+    }
+    
+    .accuracy-badge {
+        display: inline-block;
+        padding: 8px 16px;
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border-radius: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    
+    .prediction-table {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        margin: 30px 0;
+    }
+    
+    .prediction-table th {
+        background: #667eea;
+        color: white;
+        padding: 15px;
+        font-weight: 500;
+    }
+    
+    .prediction-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #e0e0e0;
+        text-align: center;
+    }
+    
+    .trend-up {
+        color: #28a745;
+        font-weight: bold;
+    }
+    
+    .trend-down {
+        color: #dc3545;
+        font-weight: bold;
+    }
+    
+    .recommendations {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        margin: 30px 0;
+        border-right: 5px solid #667eea;
+    }
+    
+    .recommendations ul {
+        list-style: none;
+        padding-right: 0;
+    }
+    
+    .recommendations li {
+        margin-bottom: 15px;
+        padding-right: 30px;
+        position: relative;
+    }
+    
+    .recommendations li:before {
+        content: "✓";
+        color: #28a745;
+        position: absolute;
+        right: 0;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if not has_data %}
+        <div class="no-data">
+            <i class="fas fa-chart-line"></i>
+            <h2>لا توجد بيانات كافية للتنبؤ</h2>
+            <p>نحتاج على الأقل 30 يوم من بيانات المبيعات لإنشاء تنبؤات دقيقة</p>
+            <a href="{{ url_for('upload.upload_file') }}" class="btn">
+                <i class="fas fa-upload"></i> رفع ملف مبيعات
+            </a>
+        </div>
+    {% else %}
+        <!-- رأس صفحة التنبؤات -->
+        <div class="prediction-header">
+            <h1>
+                <i class="fas fa-chart-line"></i>
+                توقعات المبيعات والأرباح
+            </h1>
+            <p>توقعات للـ 30 يوم القادمة بناءً على تحليل بياناتك التاريخية</p>
+            <div style="margin-top: 20px;">
+                <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px;">
+                    <i class="far fa-clock"></i>
+                    تم الإنشاء: {{ generated_at }}
+                </span>
+            </div>
+        </div>
+        
+        <!-- بطاقات الملخص -->
+        <div class="summary-cards">
+            <div class="summary-card">
+                <i class="fas fa-dollar-sign"></i>
+                <div class="value">{{ "%.0f"|format(summary.total_predicted_sales) }} ريال</div>
+                <div class="label">إجمالي المبيعات المتوقعة</div>
+            </div>
+            
+            <div class="summary-card">
+                <i class="fas fa-chart-line"></i>
+                <div class="value">{{ "%.0f"|format(summary.avg_daily_sales) }} ريال</div>
+                <div class="label">متوسط المبيعات اليومية</div>
+            </div>
+            
+            <div class="summary-card">
+                <i class="fas fa-calendar"></i>
+                <div class="value">{{ summary.total_days }}</div>
+                <div class="label">عدد أيام التنبؤ</div>
+            </div>
+        </div>
+        
+        <!-- دقة النموذج -->
+        {% if summary.model_accuracy %}
+        <div style="text-align: center; margin: 20px 0;">
+            <div class="accuracy-badge">
+                <i class="fas fa-chart-line"></i>
+                دقة النموذج: {{ "%.1f"|format(summary.model_accuracy.r2 * 100) }}%
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- بيانات الرسم البياني -->
+        <input type="hidden" id="chartLabels" value='{{ chart_data.labels|tojson }}'>
+        <input type="hidden" id="chartSales" value='{{ chart_data.sales|tojson }}'>
+        <input type="hidden" id="chartProfit" value='{{ chart_data.profit|tojson }}'>
+        
+        <!-- الرسم البياني -->
+        <div class="chart-card full-width">
+            <div class="chart-header">
+                <h3>
+                    <i class="fas fa-chart-line"></i>
+                    توقعات المبيعات والأرباح
+                </h3>
+            </div>
+            <div class="chart-container" style="height: 400px;">
+                <canvas id="predictionsChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- جدول التنبؤات -->
+        <div class="prediction-table">
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>المبيعات المتوقعة</th>
+                        <th>الربح المتوقع</th>
+                        <th>الاتجاه</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pred in predictions %}
+                    <tr>
+                        <td>{{ pred.date }}</td>
+                        <td><strong>{{ "%.0f"|format(pred.predicted_sales) }} ريال</strong></td>
+                        <td>{{ "%.0f"|format(pred.predicted_profit) }} ريال</td>
+                        <td>
+                            {% if loop.index > 1 %}
+                                {% if pred.predicted_sales > predictions[loop.index0-1].predicted_sales %}
+                                    <span class="trend-up">
+                                        <i class="fas fa-arrow-up"></i> تصاعدي
+                                    </span>
+                                {% elif pred.predicted_sales < predictions[loop.index0-1].predicted_sales %}
+                                    <span class="trend-down">
+                                        <i class="fas fa-arrow-down"></i> تنازلي
+                                    </span>
+                                {% else %}
+                                    <span>مستقر</span>
+                                {% endif %}
+                            {% else %}
+                                <span>-</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- التوصيات -->
+        <div class="recommendations">
+            <h3>
+                <i class="fas fa-lightbulb"></i>
+                توصيات بناءً على التوقعات
+            </h3>
+            <ul>
+                <li>زيادة المخزون في الأيام المتوقع أن تكون المبيعات فيها مرتفعة</li>
+                <li>التركيز على المنتجات عالية الربحية خلال فترة التوقعات</li>
+                <li>تجهيز عروض ترويجية في الأيام المتوقع انخفاض المبيعات</li>
+                <li>مراجعة التوقعات شهرياً وتحديثها بناءً على البيانات الجديدة</li>
+            </ul>
+        </div>
+        
+        <!-- زر التصدير -->
+        <div style="text-align: left; margin: 30px 0;">
+            <select id="exportType" style="padding: 10px; border-radius: 8px; border: 1px solid #ddd; margin-left: 10px;">
+                <option value="pdf">PDF</option>
+                <option value="excel">Excel</option>
+                <option value="csv">CSV</option>
+            </select>
+            <button class="btn" onclick="exportReport()">
+                <i class="fas fa-file-export"></i>
+                تصدير التوقعات
+            </button>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    // رسم بياني للتنبؤات
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('predictionsChart').getContext('2d');
+        
+        const labels = JSON.parse(document.getElementById('chartLabels').value);
+        const sales = JSON.parse(document.getElementById('chartSales').value);
+        const profit = JSON.parse(document.getElementById('chartProfit').value);
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'المبيعات المتوقعة',
+                        data: sales,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'الربح المتوقع',
+                        data: profit,
+                        borderColor: '#28a745',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.raw.toFixed(0) + ' ريال';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString() + ' ريال';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}
